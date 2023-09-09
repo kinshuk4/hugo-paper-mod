@@ -1,3 +1,15 @@
+a:hover {
+    color: var(--link-hover);
+}
+
+a.anchor:hover {
+    color: var(--link-hover) !important;
+}
+
+svg:hover {
+    color: var(--link-hover);
+}
+
 .main {
     position: relative;
     min-height: calc(100vh - var(--header-height) - var(--footer-height));
@@ -21,6 +33,10 @@
     background: var(--primary);
     border-radius: calc(36px / 2);
     padding: 0 16px;
+}
+
+.pagination a:hover {
+    color: var(--link-hover);
 }
 
 .pagination .next {
