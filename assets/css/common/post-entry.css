@@ -43,6 +43,16 @@
     border: 1px solid var(--border);
 }
 
+/* Change color of post titles in list on hover */
+.post-entry:hover .entry-header h2 {
+    color: var(--link-hover);
+}
+
+/* Change color of search page entries on hover */
+.post-entry:hover header.entry-header {
+    color: var(--link-hover);
+}
+
 .post-entry:active {
     transform: scale(0.96);
 }
