@@ -302,12 +302,23 @@
     margin-bottom: 5px;
 }
 
-.post-tags a,
-.share-buttons,
-.paginav {
-    border-radius: var(--radius);
-    background: var(--code-bg);
-    border: 1px solid var(--border);
+/* Separated .post-tags a:hover and .paginav a:hover */
+
+.post-tags a:hover {
+    background: var(--border);
+    color: var(--link-hover);
+}
+
+.paginav a:hover {
+    background: var(--border);
+}
+
+.share-buttons {
+    margin: 14px 0;
+    padding-inline-start: var(--radius);
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
 }
 
 .post-tags a {
