@@ -42,3 +42,12 @@
     color: var(--secondary);
     font-size: 14px;
 }
+
+/*
+    Change color of archive h3 titles when hovered
+    Style the h3 that is 2 children before the hovered a
+    Source: https://tobiasahlin.com/blog/previous-sibling-css-has/
+*/
+h3.archive-entry-title:has(+ * + a.entry-link:hover) {
+    color: var(--link-hover);
+}
