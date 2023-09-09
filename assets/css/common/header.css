@@ -68,6 +68,8 @@ body:not(.dark) #sun {
 #menu .active {
     font-weight: 500;
     border-bottom: 2px solid currentColor;
+    /* Change color of #menu .active to link-hover */
+    color: var(--link-hover);
 }
 
 .lang-switch li,
