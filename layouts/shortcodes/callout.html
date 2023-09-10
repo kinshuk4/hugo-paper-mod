@@ -1,0 +1,18 @@
+<!-- layouts/shortcodes/callout.html -->
+
+{{ $type := .Get "type" }}
+
+<div class="callout callout-{{ $type }}">
+  <div class="callout-icon">
+    {{ if eq $type "info" }}
+      <i class="fas fa-info-circle"></i>
+    {{ else if eq $type "warning" }}
+      <i class="fas fa-exclamation-triangle"></i>
+    {{ else if eq $type "success" }}
+      <i class="fas fa-check-circle"></i>
+    {{ end }}
+  </div>
+  <div class="callout-content">
+    {{ .Inner | markdownify }}
+  </div>
+</div>

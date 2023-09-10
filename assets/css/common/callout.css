@@ -1,0 +1,29 @@
+/* assets/css/styles.css */
+
+.callout {
+    border: 2px solid var(--link-hover);
+    background-color: var(--theme);
+    padding: 10px;
+    margin: 20px 0;
+    /* padding: 1.5em 1.25em;
+    border-radius: 3px;
+    margin: 20px 0;
+    margin-bottom: 20px; */
+}
+
+.callout-info {
+    border-color: #3498db;
+}
+
+.callout-warning {
+    border-color: #f39c12;
+}
+
+.callout-success {
+    border-color: #2ecc71;
+}
+
+.callout-icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
