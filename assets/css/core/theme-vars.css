@@ -5,6 +5,8 @@
     --main-width: 720px;
     --header-height: 60px;
     --footer-height: 60px;
+    /* Add new variable for height of footer without socials, such as on homepage (index_profile) */
+    --footer-no-socials-height: 40px;
     --radius: 8px;
     --theme: rgb(255, 255, 255);
     --entry: rgb(255, 255, 255);
