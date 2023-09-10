@@ -158,4 +158,18 @@
             {{- end }}
         </ul>
     </nav>
+    
+    <!-- if google analytics env var is set -->
+    {{ with .Site.Params.GAEnvVar }}
+        <p>Hello world 123 fadfafa dafaf avdafad afafadf aadfaf</p>
+        {{ $gaEnvVar := . }}
+        <p> Env var name {{$gaEnvVar}}</p>
+        <h1>{{ getenv "HUGO_GA_TRACKING_ID" }}</h1>
+    {{ end }}
+
+    {{ with . }}
+        <h1>{{ .Site.Params.googleAnalytics }}</h1>
+    {{ end }}
+    
+    
 </header>
