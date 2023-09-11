@@ -35,12 +35,28 @@ svg:hover {
     padding: 0 16px;
 }
 
+.pagination p {
+    color: var(--link-hover);
+    font-size: 13px;
+    line-height: 36px;
+    background: var(--primary);
+    border-radius: calc(36px / 3);
+    padding: 0 16px;
+    font-weight: bold; 
+}
+
 .pagination a:hover {
     color: var(--link-hover);
 }
 
 .pagination .next {
     margin-inline-start: auto;
+}
+
+.justify-content-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .social-icons {
