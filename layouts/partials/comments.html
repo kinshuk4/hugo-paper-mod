@@ -1,3 +1,16 @@
 {{- /* Comments area start */ -}}
 {{- /* to add comments read => https://gohugo.io/content-management/comments/ */ -}}
 {{- /* Comments area end */ -}}
+
+<!-- If comments are enabled -->
+{{- if .Site.Params.comments }}
+    <!-- Check for default comment system -->
+    {{- if not .Site.Params.pageCommentSystem }}
+        {{ template "_internal/disqus.html" . }}
+    {{- end }}
+
+    <!-- TODO: Add Other comment systems -->
+    
+{{- end }}
+
+
