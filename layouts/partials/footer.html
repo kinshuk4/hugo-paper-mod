@@ -6,10 +6,10 @@
     <span>&copy; {{ now.Year }} <a href="{{ "" | absLangURL }}">{{ site.Title }}</a></span>
     {{- end }}
 
-    {{- if .Site.Params.ShowPrivacy }}
+    {{- if .Site.Params.Privacy.Show }}
         <span>
             •
-            <a href="/privacy">Privacy Policy</a>
+            <a href="/{{.Site.Params.Privacy.Page}}">Privacy Policy</a>
         </span>
     {{- end }}
     
