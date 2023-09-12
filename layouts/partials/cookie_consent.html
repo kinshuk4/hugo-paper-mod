@@ -4,7 +4,23 @@
 <div id="disclaimer-banner">
   <div class="d-content">
     <span>This site uses cookies to improve your experience on our website. By using and continuing to navigate this website, you accept this. <a href="/privacy">Privacy Policy</a></span>
-    <button type="button" id="b-btn" onclick="handleBtnClick()"><span>I understand</span></button>
+    <button type="button" id="b-btn"><span>I understand</span></button>
   </div>
 </div>
+<!-- TODO: Retry moving this JS to its file in future -->
+<script>
+  function hideDisclaimer() {
+    document.getElementById('disclaimer-banner').style.display = 'none';
+  }
 
+  (function() {
+    if (localStorage.getItem('disclaimer-confirm')) {
+      hideDisclaimer();
+    }
+  })();
+
+  document.getElementById("b-btn").addEventListener('click', function() {
+    localStorage.setItem('disclaimer-confirm', 'true');
+    hideDisclaimer();
+  })
+</script>
