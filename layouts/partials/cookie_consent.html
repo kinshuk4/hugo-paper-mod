@@ -1,12 +1,10 @@
 {{- /* Footer custom content area start */ -}}
 {{- /*  Can be part of extended footer, but keeping it here. Insert any custom code web-analytics, resources, etc. here */ -}}
 {{- /* Footer custom content area end */ -}}
-<div id="cookie-consent" class="cookie-consent">
-    <div class="cookie-message">
-      This site uses cookies to improve your experience on our website. By using and continuing to navigate this website, you accept this.
-      <a href="/privacy" class="privacy-policy-link">Privacy Policy</a>
-    </div>
-    <button id="accept-cookies" class="accept-cookies-button">I understand</button>
+<div id="disclaimer-banner">
+  <div class="d-content">
+    <span>This site uses cookies to improve your experience on our website. By using and continuing to navigate this website, you accept this. <a href="/privacy">Privacy Policy</a></span>
+    <button type="button" id="b-btn" onclick="handleBtnClick()"><span>I understand</span></button>
+  </div>
 </div>
 
-  <script src="{{ "js/cookie_consent.js" | relURL }}"></script>
