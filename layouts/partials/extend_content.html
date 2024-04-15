@@ -1,5 +1,12 @@
 <!-- https://github.com/adityatelange/hugo-PaperMod/issues/1393 -->
 {{- /* Extend content area start */ -}}
+<!-- https://gohugo.io/content-management/diagrams/#mermaid-diagrams -->
+{{ if .Store.Get "hasMermaid" }}
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+{{ end }}
 {{- /* Insert any custom code. */ -}}
 {{- /* Can be overwritten by partial with the same name in the global layouts. */ -}}
 {{- /* Extend content area end */ -}}
