@@ -8,9 +8,21 @@
     {{- $random := (substr (md5 .Destination) 0 5) }}
     <input type="checkbox" id="zoomCheck-{{$random}}" hidden>
     <label for="zoomCheck-{{$random}}">
-        <img class="zoomCheck" loading="lazy" decoding="async"
+        {{ $src := strings.TrimPrefix "/" .Destination }}
+        {{ $image := resources.GetMatch $src }}
+        {{/*  if image exists and is not svg  */}}
+        {{- if and ($image) (ne (path.Ext $src) ".svg") }}
+            {{ warnf "Destination: %s" $image }}
+            {{- $image := resources.GetMatch .Destination }}
+                {{- $webpImage := $image.Process "webp" }}
+                <img class="zoomCheck" loading="lazy" decoding="async"
+                src="{{ $webpImage.RelPermalink }}" alt="{{ .Text }}"
+                {{ with .Title }} title="{{ . }}" {{ end }} />
+        {{- else }}
+            <img class="zoomCheck" loading="lazy" decoding="async"
             src="{{ .Destination | safeURL }}" alt="{{ .Text }}"
-            {{ with.Title}} title="{{ . }}" {{ end }} />
+            {{ with .Title }} title="{{ . }}" {{ end }} />
+        {{- end }}
     </label>
 {{- else }}
     <img loading="lazy" decoding="async" src="{{ .Destination | safeURL }}"
