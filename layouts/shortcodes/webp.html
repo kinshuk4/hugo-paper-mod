@@ -1,8 +1,15 @@
 {{ $src := .Get "src" }}
 {{ $image := resources.GetMatch ($src | strings.TrimPrefix "/") }}
 {{ if $image }}
-  {{ $webp := $image.Resize "800x webp" }}
-  <img src="{{ $webp.RelPermalink }}" alt="{{ .Get "alt" }}">
+  {{ if ne $image.MediaType.SubType "svg" }}
+    {{/* Only resize and convert to webp if the image is not SVG */}}
+    {{ $webp := $image.Resize "800x webp" }}
+    <img src="{{ $webp.RelPermalink }}" alt="{{ .Get "alt" }}">
+  {{ else }}
+    {{/* Directly output SVG without processing */}}
+    <img src="{{ $image.RelPermalink }}" alt="{{ .Get "alt" }}">
+  {{ end }}
 {{ else }}
+  {{/* Fallback for images not found in assets. Output the raw source path */}}
   <img src="{{ $src }}" alt="{{ .Get "alt" }}">
 {{ end }}
