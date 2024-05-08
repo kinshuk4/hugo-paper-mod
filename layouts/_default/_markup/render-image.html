@@ -12,7 +12,6 @@
         {{ $image := resources.GetMatch $src }}
         {{/*  if image exists and is not svg  */}}
         {{- if and ($image) (ne (path.Ext $src) ".svg") }}
-            {{ warnf "Destination: %s" $image }}
             {{- $image := resources.GetMatch .Destination }}
                 {{- $webpImage := $image.Process "webp" }}
                 <img class="zoomCheck" loading="lazy" decoding="async"
