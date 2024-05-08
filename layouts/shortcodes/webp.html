@@ -1,0 +1,8 @@
+{{ $src := .Get "src" }}
+{{ $image := resources.GetMatch ($src | strings.TrimPrefix "/") }}
+{{ if $image }}
+  {{ $webp := $image.Resize "800x webp" }}
+  <img src="{{ $webp.RelPermalink }}" alt="{{ .Get "alt" }}">
+{{ else }}
+  <img src="{{ $src }}" alt="{{ .Get "alt" }}">
+{{ end }}
