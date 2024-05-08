@@ -1,15 +1,23 @@
 {{ $src := .Get "src" }}
 {{ $image := resources.GetMatch ($src | strings.TrimPrefix "/") }}
 {{ if $image }}
+  {{ $random := (substr (md5 $src) 0 5) }}
+  <input type="checkbox" id="zoomCheck-{{$random}}" hidden>
+  <label for="zoomCheck-{{$random}}">
   {{ if ne $image.MediaType.SubType "svg" }}
     {{/* Only resize and convert to webp if the image is not SVG */}}
     {{ $webp := $image.Resize "800x webp" }}
-    <img src="{{ $webp.RelPermalink }}" alt="{{ .Get "alt" }}">
+    <img src="{{ $webp.RelPermalink }}" alt="{{ .Get "alt" }}"
+    class="zoomCheck" loading="lazy" decoding="async">
+  
   {{ else }}
     {{/* Directly output SVG without processing */}}
-    <img src="{{ $image.RelPermalink }}" alt="{{ .Get "alt" }}">
+    <img src="{{ $image.RelPermalink }}" 
+    alt="{{ .Get "alt" }}" class="zoomCheck"
+    loading="lazy" decoding="async">
   {{ end }}
+</label>
 {{ else }}
   {{/* Fallback for images not found in assets. Output the raw source path */}}
-  <img src="{{ $src }}" alt="{{ .Get "alt" }}">
+  <img src="{{ $src }}" alt="{{ .Get "alt" }}" class="zoomCheck">
 {{ end }}
