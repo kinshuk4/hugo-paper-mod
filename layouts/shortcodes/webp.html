@@ -1,23 +1,22 @@
 {{ $src := .Get "src" }}
+{{ $alt := .Get "alt" }}
+{{ $width := .Get "width" | default "100" }}
+{{ $quality := .Get "quality" | default "75" }}
 {{ $image := resources.GetMatch ($src | strings.TrimPrefix "/") }}
 {{ if $image }}
-  {{ $random := (substr (md5 $src) 0 5) }}
-  <input type="checkbox" id="zoomCheck-{{$random}}" hidden>
-  <label for="zoomCheck-{{$random}}">
+{{ $random := (substr (md5 $src) 0 5) }}
+<input type="checkbox" id="zoomCheck-{{$random}}" hidden>
+<label for="zoomCheck-{{$random}}">
+  {{/* Only resize and convert to webp if the image is not SVG */}}
   {{ if ne $image.MediaType.SubType "svg" }}
-    {{/* Only resize and convert to webp if the image is not SVG */}}
-    {{ $webp := $image.Resize "800x webp" }}
-    <img src="{{ $webp.RelPermalink }}" alt="{{ .Get "alt" }}"
-    class="zoomCheck" loading="lazy" decoding="async">
-  
+    {{ $webp := $image.Process (printf "webp q%s" $quality) }}
+    <img src="{{ $webp.RelPermalink }}" alt="{{ .Get " alt" }}" class="zoomCheck" style="width: {{ $width }}%;" loading="lazy" decoding="async">
   {{ else }}
-    {{/* Directly output SVG without processing */}}
-    <img src="{{ $image.RelPermalink }}" 
-    alt="{{ .Get "alt" }}" class="zoomCheck"
-    loading="lazy" decoding="async">
+  {{/* Directly output SVG without processing */}}
+  <img src="{{ $image.RelPermalink }}" alt="{{ .Get " alt" }}" class="zoomCheck" loading="lazy" decoding="async">
   {{ end }}
 </label>
 {{ else }}
-  {{/* Fallback for images not found in assets. Output the raw source path */}}
-  <img src="{{ $src }}" alt="{{ .Get "alt" }}" class="zoomCheck">
+{{/* Fallback for images not found in assets. Output the raw source path */}}
+<img src="{{ $src }}" alt="{{ .Get " alt" }}" class="zoomCheck">
 {{ end }}
