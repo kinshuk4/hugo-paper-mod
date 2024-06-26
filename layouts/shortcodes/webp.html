@@ -10,7 +10,7 @@
   {{/* Only resize and convert to webp if the image is not SVG */}}
   {{ if ne $image.MediaType.SubType "svg" }}
     {{ $webp := $image.Process (printf "webp q%s" $quality) }}
-    <img src="{{ $webp.RelPermalink }}" alt="{{ .Get " alt" }}" class="zoomCheck" style="width: {{ $width }}%;" loading="lazy" decoding="async">
+    <img src="{{ $webp.RelPermalink }}" alt="{{ .Get "alt" }}" class="zoomCheck" style="width: {{ $width }}%;" loading="lazy" decoding="async">
   {{ else }}
   {{/* Directly output SVG without processing */}}
   <img src="{{ $image.RelPermalink }}" alt="{{ .Get " alt" }}" class="zoomCheck" loading="lazy" decoding="async">

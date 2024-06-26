@@ -10,8 +10,8 @@
     <label for="zoomCheck-{{$random}}">
         {{ $src := strings.TrimPrefix "/" .Destination }}
         {{ $image := resources.GetMatch $src }}
-        {{/*  if image exists and is not svg  */}}
-        {{- if and ($image) (ne (path.Ext $src) ".svg") }}
+        {{/*  if image exists and is not svg and gif */}}
+        {{- if and ($image) (ne (path.Ext $src) ".svg") (ne (path.Ext $src) ".gif") }}
             {{- $image := resources.GetMatch .Destination }}
                 {{- $webpImage := $image.Process "webp" }}
                 <img class="zoomCheck" loading="lazy" decoding="async"
