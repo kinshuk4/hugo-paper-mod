@@ -4,7 +4,8 @@
 {{ if .Store.Get "hasMermaid" }}
   <script type="module">
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
-    mermaid.initialize({ startOnLoad: true });
+    const lightMode = document.documentElement.getAttribute('saved-theme') === 'light'
+    mermaid.initialize({ startOnLoad: true, theme: lightMode ? 'light' : 'dark' });
   </script>
 {{ end }}
 {{- /* Insert any custom code. */ -}}
