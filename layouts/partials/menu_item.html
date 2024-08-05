@@ -1,0 +1,12 @@
+<li class="{{ if .HasChildren }}dropdown{{ end }}">
+    <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }}" class="{{ if .HasChildren }}dropdown-toggle{{ end }}">
+        {{ .Pre }}{{ .Name }}{{ .Post }}
+    </a>
+    {{ if .HasChildren }}
+    <ul class="dropdown-menu">
+        {{ range .Children }}
+            {{ partial "partials/menu_item.html" . }}
+        {{ end }}
+    </ul>
+    {{ end }}
+</li>
