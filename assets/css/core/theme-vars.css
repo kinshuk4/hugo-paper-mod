@@ -1,8 +1,8 @@
 :root {
     --gap: 24px;
     --content-gap: 20px;
-    --nav-width: 1024px;
-    --main-width: 720px;
+    --nav-width: 960px;
+    --main-width: 960px;
     --header-height: 60px;
     --footer-height: 60px;
     /* Add new variable for height of footer without socials, such as on homepage (index_profile) */
