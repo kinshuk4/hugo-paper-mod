@@ -24,6 +24,24 @@ svg:hover {
 
 .pagination {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;    
+}
+
+.pagination .pagenum, .pagination .prev, .pagination .next {
+    margin: 0 3px;
+}
+
+.pagination .pagenum:hover, .pagination .prev:hover, .pagination .next:hover {
+    background-color: var(--primary);
+    color: var(--theme);
+}
+
+.pagination .pagenum.active {
+    background-color: var(--primary);
+    color: var(--theme);
+    border-color: var(--primary);
 }
 
 .pagination a {
@@ -34,6 +52,7 @@ svg:hover {
     border-radius: calc(36px / 2);
     padding: 0 16px;
 }
+
 
 .pagination p {
     color: var(--link-hover);
