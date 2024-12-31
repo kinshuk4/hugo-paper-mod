@@ -1,15 +1,19 @@
 {{ $paginator := .paginator }}
 {{ $context := .context }}
 
-{{ if gt $paginator.TotalPages 1 }}
+{{- if gt $paginator.TotalPages 1 }}
+
+
 
 <footer class="page-footer">
   <!-- TODO - Currently the nav is not getting centrally justified.paginav .pagenum {.paginav .pagenum { -->
   <nav class="pagination justify-content-center">
     <!-- Prev link -->
-    {{ if $paginator.HasPrev }}
-    <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">«&nbsp;{{ i18n "prev_page" $context }}&nbsp;</a>
-    {{ end }}
+    {{- if $paginator.HasPrev }}
+    <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">
+      «&nbsp;{{ i18n "prev_page" }}&nbsp;
+    </a>
+    {{- end }}
 
     {{ if ($context.Param "ShowPageNums") }}
     <!-- modified https://raw.githubusercontent.com/oschmid/website/master/layouts/partials/pagination.html with tailwindCSS -->
@@ -39,19 +43,19 @@
     -->
 
 
-    <!-- Number of links either side of the current page -->
-    {{ $adjacent_links := 1 }}
-    <!-- $max_links = ($adjacent_links * 2) + 1 -->
-    {{ $max_links := (add (mul $adjacent_links 2) 1) }}
-    <!-- Pages to print -->
-    {{ $lower_limit := 1 }}
-    {{ $upper_limit := $paginator.TotalPages }}
-    {{ $include_lower_ellipsis := false }}
-    {{ $include_upper_ellipsis := false }}
+          <!-- Number of links either side of the current page -->
+      {{ $adjacent_links := 1 }}
+      <!-- $max_links = ($adjacent_links * 2) + 1 -->
+      {{ $max_links := (add (mul $adjacent_links 2) 1) }}
+      <!-- Pages to print -->
+      {{ $lower_limit := 1 }}
+      {{ $upper_limit := $paginator.TotalPages }}
+      {{ $include_lower_ellipsis := false }}
+      {{ $include_upper_ellipsis := false }}
 
-    {{ if gt $paginator.TotalPages (add $max_links 2) }}
-    <!-- If we have more pages before the current page than we can print -->
-    {{ if ge $paginator.PageNumber $adjacent_links }}
+      {{ if gt $paginator.TotalPages (add $max_links 2) }}
+      <!-- If we have more pages before the current page than we can print -->
+      {{ if ge $paginator.PageNumber $adjacent_links }}
         {{ $lower_limit = sub $paginator.PageNumber $adjacent_links }}
         <!-- Show more pages at the end of the range -->
         {{ if lt (sub $paginator.TotalPages $lower_limit) $max_links }}
@@ -59,12 +63,12 @@
         {{ end }}
         <!-- Show ellipsis -->
         {{ if gt (sub $lower_limit 1) 1 }}
-          {{ $include_lower_ellipsis := true }}
+          {{ $include_lower_ellipsis = true }}
         {{ end }}
-    {{ end }}
+      {{ end }}
     
-    <!-- If we have more pages after the current page than we can print -->
-    {{ if gt (sub $paginator.TotalPages $paginator.PageNumber) $adjacent_links }}
+      <!-- If we have more pages after the current page than we can print -->
+      {{ if gt (sub $paginator.TotalPages $paginator.PageNumber) $adjacent_links }}
         {{ $upper_limit = add $paginator.PageNumber $adjacent_links }}
         <!-- Show more pages at the beginning of the range -->
         {{ if le $upper_limit $max_links }}
@@ -72,16 +76,16 @@
         {{ end }}
         <!-- Show ellipsis -->
         {{ if gt (sub $paginator.TotalPages $upper_limit) 1 }}
-          {{ $include_upper_ellipsis := true }}
+          {{ $include_upper_ellipsis = true }}
         {{ end }}
+      {{ end }}
     {{ end }}
-    {{ end }}
-    
     {{ range $paginator.Pagers }}
       <!-- Include first, last, and middle pages -->
       {{ if or (or (eq .PageNumber 1) (eq .PageNumber $paginator.TotalPages)) (and (ge .PageNumber $lower_limit) (le .PageNumber $upper_limit)) }}
         {{ if eq $paginator.PageNumber .PageNumber }}
           <p class="pagenum">{{ .PageNumber }}</p>
+
         {{ else }}
           <a href="{{ .URL }}" class="pagenum">{{ .PageNumber }}</a>
         {{ end }}
@@ -91,12 +95,14 @@
         {{ end }}
       {{ end }}
     {{ end }}
-    {{ end }}
-    
+    {{- end }}
+
     <!-- Next Link -->
-    {{ if $paginator.HasNext }}
-    <a class="next" href="{{ $paginator.Next.URL | absURL }}">{{ i18n "next_page" $context }}&nbsp;&nbsp;»</a>
-    {{ end }}
+    {{- if $paginator.HasNext }}
+    <a class="next" href="{{ $paginator.Next.URL | absURL }}">
+      {{- i18n "next_page" }}&nbsp;&nbsp;»
+    </a>
+    {{- end }}
   </nav>
 </footer>
-{{ end }}
+{{- end }}
