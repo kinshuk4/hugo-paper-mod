@@ -1,0 +1,42 @@
+<style>
+    .code-tabs {
+        font-family: sans-serif;
+        margin-top: var(--gap);
+    }
+    .tab-buttons {
+        display: flex;
+        margin-bottom: 0; /* Remove the margin below the buttons */
+        border-bottom: 1px solid var(--border); /* Add a bottom border for separation */
+    }
+    .tab-button {
+        padding: 0.5rem 1rem;
+        margin-right: 0.5rem;
+        background: var(--theme); /* Use the theme background */
+        border: 1px solid var(--border); /* Use the theme border color */
+        border-bottom: none; /* Remove the bottom border for inactive buttons */
+        cursor: pointer;
+        color: var(--primary); /* Use the primary text color */
+        border-radius: var(--radius) var(--radius) 0 0; /* Round the top corners */
+    }
+    .tab-button.active {
+        background: var(--entry); /* Match the code block background */
+        border: 1px solid var(--border); /* Use the theme border color */
+        border-bottom: none; /* Remove the bottom border to connect with the code block */
+        color: var(--primary); /* Use the primary text color */
+        font-weight: bold; /* Highlight the active tab */
+        z-index: 1; /* Ensure the active button is above the code block */
+    }
+    .tab-contents {
+        border: 1px solid var(--border); /* Use the theme border color */
+        border-radius: 0 0 var(--radius) var(--radius); /* Round the bottom corners */
+        padding: 1rem;
+        background-color: var(--code-bg); /* Use the code background color */
+        margin-top: -1px; /* Overlap the border with the active button */
+    }
+    .tab-content {
+        display: none;
+    }
+    .tab-content.active {
+        display: block;
+    }
+</style>

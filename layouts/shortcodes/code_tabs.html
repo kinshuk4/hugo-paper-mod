@@ -1,0 +1,55 @@
+<div class="code-tabs">
+    <div class="tab-buttons">
+        {{ $inner := .Inner | string }} <!-- Convert .Inner to a string -->
+        {{ $inner = strings.TrimSpace $inner }} <!-- Trim any leading or trailing whitespace -->
+        {{ $tabs := split $inner "```" }} <!-- Split the content into tabs -->
+        {{ range $index, $tab := $tabs }}
+            {{ $tab = strings.TrimSpace $tab }}
+            {{ if not (eq $tab "") }}
+                {{ $lines := split $tab "\n" }} <!-- Split the tab content into lines -->
+                {{ $lang := (index $lines 0) | strings.TrimSpace }} <!-- Extract the first line as the language -->
+                <button class="tab-button {{ if eq $index 0 }}active{{ end }}" data-tab="{{ $index }}">
+                    {{ $lang | lower | title }} <!-- Format the language properly -->
+                </button>
+            {{ end }}
+        {{ end }}     
+    </div>
+
+    <div class="tab-contents">
+        {{ range $index, $tab := $tabs }}
+        {{ $tab = strings.TrimSpace $tab }} <!-- Trim whitespace from each tab -->
+        {{ if not (eq $tab "") }} <!-- Skip empty tabs caused by consecutive ``` -->
+        <div class="tab-content {{ if eq $index 0 }}active{{ end }}" data-tab="{{ $index }}">
+            {{ $lines := split $tab "\n" }} <!-- Split the tab content into lines -->
+            {{ $lang := (index $lines 0) | strings.TrimSpace }}
+            {{ $.Scratch.Set "codeLines" (slice) }} <!-- Initialize a mutable array using scratch -->
+            {{ range $i, $line := $lines }}
+                {{ if gt $i 0 }} <!-- Skip the first line (language) -->
+                    {{ $.Scratch.Add "codeLines" $line }} <!-- Append the line to the scratch variable -->
+                {{ end }}
+            {{ end }}
+            {{ $code := delimit ($.Scratch.Get "codeLines") "\n" }}
+             {{ $highlighted := highlight $code $lang "" }} 
+             {{ $highlighted | safeHTML }}
+        </div>
+        {{ end }}
+        {{ end }}
+    </div>
+
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const tab = this.getAttribute('data-tab');
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                this.classList.add('active');
+                document.querySelector(`.tab-content[data-tab="${tab}"]`).classList.add('active');
+            });
+        });
+    });
+</script>
