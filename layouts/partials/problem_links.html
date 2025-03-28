@@ -1,7 +1,7 @@
-<div class="practice-links">
+<div class="practice-strip">
     <span class="practice-label">Practice on:</span>
-    {{ $problemLinks := .Params.problem_links }}
     <div class="link-buttons">
+        {{ $problemLinks := .Params.problem_links }}
         {{ range $problemLinks }}
         <a href="{{ . }}" class="platform-button" target="_blank" rel="noopener noreferrer">
             {{ if strings.Contains . "leetcode.com" }}LeetCode

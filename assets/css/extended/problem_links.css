@@ -1,49 +1,58 @@
-/* Practice Links Container */
-.practice-links {
-    display: flex; /* Align label and buttons on the same row */
-    align-items: center; /* Align items vertically */
+/* Styling the strip */
+.practice-strip {
+    margin-top: var(--content-gap); /* Top spacing */
+    border: 1px solid var(--border); /* Border around the strip */
+    border-radius: var(--radius); /* Rounded corners */
+    background-color: var(--tertiary); /* Background of the strip */
+    padding: var(--content-gap); /* Padding inside the strip */
+    display: flex; /* Align items horizontally */
+    align-items: center; /* Vertically center label and buttons */
     gap: var(--gap); /* Space between label and buttons */
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
 }
 
-/* Label Styling */
+/* Styling for Practice Label */
 .practice-label {
-    font-weight: 600; /* Ensure label stands out */
-    color: var(--primary); /* Use primary theme colour */
-    font-size: 1em; /* Slightly larger text for emphasis */
+    font-weight: 600; /* Makes the label bold */
+    color: var(--primary); /* Text colour for light theme */
+    font-size: 1em; /* Standard font size */
     margin-right: var(--gap); /* Space between label and buttons */
 }
 
-/* Platform Buttons */
+/* Styling for Buttons */
 .platform-button {
     text-decoration: none; /* Remove underline */
-    background-color: var(--primary); /* Primary button colour */
-    color: var(--theme); /* Text colour based on theme */
-    padding: 6px 12px; /* Add padding for button-like click area */
-    font-size: 0.9em; /* Slightly smaller font size */
-    border-radius: var(--radius); /* Use theme radius for rounded corners */
-    margin: 0; /* Prevent vertical gaps */
+    background-color: var(--primary); /* Button background */
+    color: var(--theme); /* Text colour adjusts dynamically */
+    padding: 6px 12px; /* Padding inside buttons */
+    font-size: 0.9em; /* Slightly smaller text size */
+    border-radius: var(--radius); /* Rounded corners for buttons */
+    border: 1px solid var(--border); /* Subtle border */
     transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effects */
-    white-space: nowrap; /* Prevent text wrapping inside buttons */
-    display: inline-block; /* Ensure buttons remain inline */
-    border: 1px solid var(--border); /* Add a subtle border for button styling */
+    white-space: nowrap; /* Prevent text wrapping */
+    display: inline-block; /* Ensure button consistency */
 }
 
 /* Hover Effects */
 .platform-button:hover {
-    background-color: var(--link-hover); /* Use link-hover variable for hover colour */
-    transform: scale(1.05); /* Add a subtle scaling effect */
+    background-color: var(--link-hover); /* Hover background colour */
+    transform: scale(1.05); /* Slight scaling effect on hover */
 }
 
-/* Dark Mode Adjustments */
+/* Dark Mode Styling */
+.dark .practice-strip {
+    background-color: var(--entry); /* Adjust strip background for dark mode */
+    border: 1px solid var(--border); /* Border in dark mode */
+}
+
 .dark .practice-label {
-    color: var(--primary); /* Adjust label colour in dark mode */
+    color: var(--primary); /* Label colour for dark mode */
 }
 
 .dark .platform-button {
-    background-color: var(--secondary); /* Secondary button colour in dark mode */
-    color: var(--primary); /* Adjust text colour */
-    border: 1px solid var(--border); /* Ensure border matches dark mode colours */
+    background-color: var(--secondary); /* Button background for dark mode */
+    color: var(--primary); /* Text colour adjusts dynamically */
+    border: 1px solid var(--border); /* Subtle border */
 }
 
 .dark .platform-button:hover {
