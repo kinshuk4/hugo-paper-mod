@@ -29,19 +29,26 @@
                 {{ end }}
             {{ end }}
             {{ $code := delimit ($.Scratch.Get "codeLines") "\n" }}
-             {{ $highlighted := highlight $code $lang "" }} 
-             {{ $highlighted | safeHTML }}
+            {{ $highlighted := highlight $code $lang "" }}
+            {{ $highlighted | safeHTML }}
         </div>
         {{ end }}
         {{ end }}
     </div>
-
 </div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const tabButtons = document.querySelectorAll('.tab-button');
         const tabContents = document.querySelectorAll('.tab-content');
+
+        // Ensure the first tab and its content are active on page load
+        if (tabButtons.length > 0 && tabContents.length > 0) {
+            tabButtons[0].classList.add('active');
+            tabContents[0].classList.add('active');
+        }
+
+        // Add click event listeners to switch tabs
         tabButtons.forEach(button => {
             button.addEventListener('click', function () {
                 const tab = this.getAttribute('data-tab');
