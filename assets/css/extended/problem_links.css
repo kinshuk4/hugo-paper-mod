@@ -1,8 +1,8 @@
 .accordion {
-    margin-top: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
+    margin-top: var(--content-gap); /* Use content gap for spacing consistency */
+    border: 1px solid var(--border); /* Border uses theme variable */
+    border-radius: var(--radius); /* Rounded corners use radius variable */
+    background-color: var(--theme); /* Background color matches theme */
     overflow: hidden;
 }
 
@@ -11,21 +11,22 @@
     padding: 10px 15px;
     border: none;
     outline: none;
-    background-color: #007acc;
-    color: white;
+    background-color: var(--primary); /* Primary theme variable for the button */
+    color: var(--theme); /* Text colour adjusts to light or dark theme */
     font-size: 1em;
     cursor: pointer;
     text-align: left;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 .accordion-button:hover {
-    background-color: #005a9e;
+    background-color: var(--link-hover); /* Use link-hover variable for hover color */
 }
 
 .accordion-content {
     display: none;
-    padding: 10px;
-    border-top: 1px solid #ddd;
+    padding: var(--content-gap); /* Content padding uses content-gap variable */
+    border-top: 1px solid var(--border); /* Consistent border color */
 }
 
 .accordion-content ul {
@@ -34,15 +35,15 @@
 }
 
 .accordion-content li {
-margin: 5px 0;
+    margin: var(--gap) 0; /* Use gap variable for consistent spacing */
 }
 
 .accordion-content li a {
     text-decoration: none;
-    color: #007acc;
+    color: var(--link-hover); /* Use link-hover for link color */
     font-weight: 600;
     display: flex;
-    align-items: center;
+    align-items: center; /* Flex alignment for SVG and text */
 }
 
 .accordion-button[aria-expanded="true"] + .accordion-content {
@@ -52,7 +53,7 @@ margin: 5px 0;
 /* Style the wrapper */
 .svg-wrapper {
     display: inline-block;
-    width: 16px; /* Desired width */
+    width: 16px; /* Desired width (fixed size for SVG wrapper) */
     height: 16px; /* Desired height */
     overflow: hidden; /* Prevent overflow */
 }
@@ -62,4 +63,28 @@ margin: 5px 0;
     width: 100%; /* Match the wrapper width */
     height: 100%; /* Match the wrapper height */
     display: block; /* Ensure proper alignment */
+}
+
+/* Dark mode updates */
+.dark .accordion {
+    background-color: var(--entry); /* Use entry variable for dark mode background */
+    border: 1px solid var(--border); /* Border remains consistent with dark mode */
+}
+
+.dark .accordion-button {
+    background-color: var(--secondary); /* Secondary variable for button background */
+    color: var(--primary); /* Text color adjusts for dark mode */
+}
+
+.dark .accordion-button:hover {
+    background-color: var(--link-hover); /* Link-hover works for both modes */
+}
+
+.dark .accordion-content {
+    background-color: var(--code-bg); /* Use code-bg variable for dark mode content background */
+    border-top: 1px solid var(--border); /* Consistent border for dark mode */
+}
+
+.dark .accordion-content li a {
+    color: var(--content); /* Adjust link text color for better contrast in dark mode */
 }

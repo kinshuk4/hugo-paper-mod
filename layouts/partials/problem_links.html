@@ -1,5 +1,7 @@
 <div class="accordion problem-links">
-    <button class="accordion-button" aria-expanded="false" onclick="toggleAccordion(this)">Practice Links</button>
+    <button class="accordion-button" aria-expanded="false" onclick="toggleAccordion(this)">
+        <span class="accordion-icon">+</span> Practice Links
+    </button>
     <div class="accordion-content">
         <ul>
         {{ $problemLinks := .Params.problem_links }}
@@ -25,10 +27,13 @@
 
 <script>
 function toggleAccordion(button) {
-    const content = button.nextElementSibling;
-    const isVisible = content.style.display === "block";
+    const content = button.nextElementSibling; // Select the accordion content
+    const isVisible = content.style.display === "block"; // Check if content is visible
 
-    content.style.display = isVisible ? "none" : "block";
-    button.setAttribute("aria-expanded", !isVisible);
+    content.style.display = isVisible ? "none" : "block"; // Toggle content visibility
+    button.setAttribute("aria-expanded", !isVisible); // Update accessibility attribute
+
+    const icon = button.querySelector('.accordion-icon'); // Find the icon inside the button
+    icon.textContent = isVisible ? '+' : '-'; // Toggle the icon text between "+" (closed) and "-" (opened)
 }
- </script>
+</script>
