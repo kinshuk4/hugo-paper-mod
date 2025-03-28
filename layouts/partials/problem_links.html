@@ -1,39 +1,15 @@
-<div class="accordion problem-links">
-    <button class="accordion-button" aria-expanded="false" onclick="toggleAccordion(this)">
-        <span class="accordion-icon">+</span> Practice Links
-    </button>
-    <div class="accordion-content">
-        <ul>
-        {{ $problemLinks := .Params.problem_links }}
+<div class="practice-links">
+    <span class="practice-label">Practice on:</span>
+    {{ $problemLinks := .Params.problem_links }}
+    <div class="link-buttons">
         {{ range $problemLinks }}
-        <li>
-            <a href="{{ . }}" class="external-link no-underline" target="_blank" rel="noopener noreferrer" 
-            title="{{ if strings.Contains . "leetcode.com" }}Solve on LeetCode{{ else }}External Link{{ end }}">
-            {{ if strings.Contains . "leetcode.com" }}Solve on LeetCode{{ else }}External Link{{ end }}
-            <!-- Select Icon -->
-            <span class="svg-wrapper">
-                {{ if strings.Contains . "leetcode.com" }}
-                    {{ partial "svg.html" (dict "name" "leetcode") }}
-                {{ else }}
-                    {{ partial "svg.html" (dict "name" "external-link") }}
-                {{ end }}
-            </span>
-
-        </li>
+        <a href="{{ . }}" class="platform-button" target="_blank" rel="noopener noreferrer">
+            {{ if strings.Contains . "leetcode.com" }}LeetCode
+            {{ else if strings.Contains . "interviewbit.com" }}InterviewBit
+            {{ else if strings.Contains . "abc.io" }}ABC.io
+            {{ else }}External Site
+            {{ end }}
+        </a>
         {{ end }}
-        </ul>
     </div>
 </div>
-
-<script>
-function toggleAccordion(button) {
-    const content = button.nextElementSibling; // Select the accordion content
-    const isVisible = content.style.display === "block"; // Check if content is visible
-
-    content.style.display = isVisible ? "none" : "block"; // Toggle content visibility
-    button.setAttribute("aria-expanded", !isVisible); // Update accessibility attribute
-
-    const icon = button.querySelector('.accordion-icon'); // Find the icon inside the button
-    icon.textContent = isVisible ? '+' : '-'; // Toggle the icon text between "+" (closed) and "-" (opened)
-}
-</script>

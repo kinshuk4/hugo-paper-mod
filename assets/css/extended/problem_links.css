@@ -1,90 +1,52 @@
-.accordion {
-    margin-top: var(--content-gap); /* Use content gap for spacing consistency */
-    border: 1px solid var(--border); /* Border uses theme variable */
-    border-radius: var(--radius); /* Rounded corners use radius variable */
-    background-color: var(--theme); /* Background color matches theme */
-    overflow: hidden;
+/* Practice Links Container */
+.practice-links {
+    display: flex; /* Align label and buttons on the same row */
+    align-items: center; /* Align items vertically */
+    gap: var(--gap); /* Space between label and buttons */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
-.accordion-button {
-    width: 100%;
-    padding: 10px 15px;
-    border: none;
-    outline: none;
-    background-color: var(--primary); /* Primary theme variable for the button */
-    color: var(--theme); /* Text colour adjusts to light or dark theme */
-    font-size: 1em;
-    cursor: pointer;
-    text-align: left;
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+/* Label Styling */
+.practice-label {
+    font-weight: 600; /* Ensure label stands out */
+    color: var(--primary); /* Use primary theme colour */
+    font-size: 1em; /* Slightly larger text for emphasis */
+    margin-right: var(--gap); /* Space between label and buttons */
 }
 
-.accordion-button:hover {
-    background-color: var(--link-hover); /* Use link-hover variable for hover color */
+/* Platform Buttons */
+.platform-button {
+    text-decoration: none; /* Remove underline */
+    background-color: var(--primary); /* Primary button colour */
+    color: var(--theme); /* Text colour based on theme */
+    padding: 6px 12px; /* Add padding for button-like click area */
+    font-size: 0.9em; /* Slightly smaller font size */
+    border-radius: var(--radius); /* Use theme radius for rounded corners */
+    margin: 0; /* Prevent vertical gaps */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effects */
+    white-space: nowrap; /* Prevent text wrapping inside buttons */
+    display: inline-block; /* Ensure buttons remain inline */
+    border: 1px solid var(--border); /* Add a subtle border for button styling */
 }
 
-.accordion-content {
-    display: none;
-    padding: var(--content-gap); /* Content padding uses content-gap variable */
-    border-top: 1px solid var(--border); /* Consistent border color */
+/* Hover Effects */
+.platform-button:hover {
+    background-color: var(--link-hover); /* Use link-hover variable for hover colour */
+    transform: scale(1.05); /* Add a subtle scaling effect */
 }
 
-.accordion-content ul {
-    list-style: none;
-    padding: 0;
+/* Dark Mode Adjustments */
+.dark .practice-label {
+    color: var(--primary); /* Adjust label colour in dark mode */
 }
 
-.accordion-content li {
-    margin: var(--gap) 0; /* Use gap variable for consistent spacing */
+.dark .platform-button {
+    background-color: var(--secondary); /* Secondary button colour in dark mode */
+    color: var(--primary); /* Adjust text colour */
+    border: 1px solid var(--border); /* Ensure border matches dark mode colours */
 }
 
-.accordion-content li a {
-    text-decoration: none;
-    color: var(--link-hover); /* Use link-hover for link color */
-    font-weight: 600;
-    display: flex;
-    align-items: center; /* Flex alignment for SVG and text */
-}
-
-.accordion-button[aria-expanded="true"] + .accordion-content {
-    display: block;
-}
-
-/* Style the wrapper */
-.svg-wrapper {
-    display: inline-block;
-    width: 16px; /* Desired width (fixed size for SVG wrapper) */
-    height: 16px; /* Desired height */
-    overflow: hidden; /* Prevent overflow */
-}
-
-/* Resize the SVG inside the wrapper */
-.svg-wrapper svg {
-    width: 100%; /* Match the wrapper width */
-    height: 100%; /* Match the wrapper height */
-    display: block; /* Ensure proper alignment */
-}
-
-/* Dark mode updates */
-.dark .accordion {
-    background-color: var(--entry); /* Use entry variable for dark mode background */
-    border: 1px solid var(--border); /* Border remains consistent with dark mode */
-}
-
-.dark .accordion-button {
-    background-color: var(--secondary); /* Secondary variable for button background */
-    color: var(--primary); /* Text color adjusts for dark mode */
-}
-
-.dark .accordion-button:hover {
-    background-color: var(--link-hover); /* Link-hover works for both modes */
-}
-
-.dark .accordion-content {
-    background-color: var(--code-bg); /* Use code-bg variable for dark mode content background */
-    border-top: 1px solid var(--border); /* Consistent border for dark mode */
-}
-
-.dark .accordion-content li a {
-    color: var(--content); /* Adjust link text color for better contrast in dark mode */
+.dark .platform-button:hover {
+    background-color: var(--link-hover); /* Hover colour remains consistent */
+    transform: scale(1.05);
 }
