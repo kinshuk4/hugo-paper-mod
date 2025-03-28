@@ -3,13 +3,20 @@
     <div class="link-buttons">
         {{ $problemLinks := .Params.problem_links }}
         {{ range $problemLinks }}
+        {{ if and (not (eq . "")) (strings.HasPrefix . "http") }} <!-- Ensure the link is not empty and starts with "http" -->
+        {{ $parsedURL := urls.Parse . }}
+        {{ $hostname := $parsedURL.Host }}
         <a href="{{ . }}" class="platform-button" target="_blank" rel="noopener noreferrer">
-            {{ if strings.Contains . "leetcode.com" }}LeetCode
-            {{ else if strings.Contains . "interviewbit.com" }}InterviewBit
-            {{ else if strings.Contains . "abc.io" }}ABC.io
-            {{ else }}External Site
+            {{ if strings.Contains $hostname "leetcode.com" }}LeetCode
+            {{ else if strings.Contains $hostname "interviewbit.com" }}InterviewBit
+            {{ else if strings.Contains $hostname "geeksforgeeks.org" }}GFG
+            {{ else }}
+            <!-- Fallback: Capitalise unknown domains -->
+            {{ $shortDomain := split $hostname "." }}
+            {{ index $shortDomain 0 | title }}
             {{ end }}
         </a>
+        {{ end }}
         {{ end }}
     </div>
 </div>
