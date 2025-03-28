@@ -27,28 +27,9 @@
       {{- partial "post_canonical.html" . -}}
     </div>
     {{- end }}
-        {{- if .Params.problem_links }}
-    <div class="problem-links">
-    <h3>Practice Links</h3>
-      <ul>
-        {{ $problemLinks := .Params.problem_links }}              
-        {{ range $problemLinks }}
-        <li>
-          <a href="{{ . }}" class="external-link no-underline" target="_blank" rel="noopener noreferrer" 
-            title="{{ if strings.Contains . "leetcode.com" }}Solve on LeetCode{{ else }}External Link{{ end }}">
-            <!-- Select Icon -->
-            {{ if strings.Contains . "leetcode.com" }}
-              {{ partial "svg.html" (dict "name" "leetcode") }}
-            {{ else }}
-              {{ partial "svg.html" (dict "name" "external-link") }}
-            {{ end }}
-            {{ . }} <!-- Optional: Display the name or description of the link -->
-          </a>
-        </li>
-        {{ end }}
-      </ul>
-   </div>
-   {{- end }}
+    {{- if .Params.problem_links }}
+      {{ partial "problem_links.html" . }}
+    {{- end }}
   </header>
   
   {{- $isHidden := (.Param "cover.hiddenInSingle") | default (.Param "cover.hidden") | default false }}

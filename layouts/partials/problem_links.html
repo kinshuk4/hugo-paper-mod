@@ -1,0 +1,34 @@
+<div class="accordion problem-links">
+    <button class="accordion-button" aria-expanded="false" onclick="toggleAccordion(this)">Practice Links</button>
+    <div class="accordion-content">
+        <ul>
+        {{ $problemLinks := .Params.problem_links }}
+        {{ range $problemLinks }}
+        <li>
+            <a href="{{ . }}" class="external-link no-underline" target="_blank" rel="noopener noreferrer" 
+            title="{{ if strings.Contains . "leetcode.com" }}Solve on LeetCode{{ else }}External Link{{ end }}">
+            {{ if strings.Contains . "leetcode.com" }}Solve on LeetCode{{ else }}External Link{{ end }}
+            <!-- Select Icon -->
+            <span class="svg-wrapper">
+                {{ if strings.Contains . "leetcode.com" }}
+                    {{ partial "svg.html" (dict "name" "leetcode") }}
+                {{ else }}
+                    {{ partial "svg.html" (dict "name" "external-link") }}
+                {{ end }}
+            </span>
+
+        </li>
+        {{ end }}
+        </ul>
+    </div>
+</div>
+
+<script>
+function toggleAccordion(button) {
+    const content = button.nextElementSibling;
+    const isVisible = content.style.display === "block";
+
+    content.style.display = isVisible ? "none" : "block";
+    button.setAttribute("aria-expanded", !isVisible);
+}
+ </script>
