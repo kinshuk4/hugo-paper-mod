@@ -5,7 +5,7 @@
         {{ $tabs := split $inner "```" }} <!-- Split the content into tabs -->
         {{ range $index, $tab := $tabs }}
             {{ $tab = strings.TrimSpace $tab }}
-            {{ if not (eq $tab "") }}
+            {{ if and (not (eq $tab "")) (not (hasPrefix $tab "#####")) }}
                 {{ $lines := split $tab "\n" }} <!-- Split the tab content into lines -->
                 {{ $lang := (index $lines 0) | strings.TrimSpace }} <!-- Extract the first line as the language -->
                 <button class="tab-button {{ if eq $index 0 }}active{{ end }}" data-tab="{{ $index }}">
@@ -18,7 +18,7 @@
     <div class="tab-contents">
         {{ range $index, $tab := $tabs }}
         {{ $tab = strings.TrimSpace $tab }} <!-- Trim whitespace from each tab -->
-        {{ if not (eq $tab "") }} <!-- Skip empty tabs caused by consecutive ``` -->
+        {{ if and (not (eq $tab "")) (not (hasPrefix $tab "#####")) }} <!-- Skip empty tabs caused by consecutive ``` -->
         <div class="tab-content {{ if eq $index 0 }}active{{ end }}" data-tab="{{ $index }}">
             {{ $lines := split $tab "\n" }} <!-- Split the tab content into lines -->
             {{ $lang := (index $lines 0) | strings.TrimSpace }}
