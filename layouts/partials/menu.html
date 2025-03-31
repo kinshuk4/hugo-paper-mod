@@ -8,7 +8,7 @@
     {{ $is_search := eq (site.GetPage .KeyName).Layout "search" }}
     <li class="menu-item">
         <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }}{{ cond $is_search " (Alt + /)" "" }}"{{ if $is_search }} accesskey="/"{{ end }}>
-            <span{{ if eq $menu_item_url $page_url }} class="active"{{ end }}>
+            <span {{ if eq $menu_item_url $page_url }} class="active"{{ end }}>
                 {{ .Pre }}{{ .Name }}{{ .Post }}
             </span>
             {{ if (findRE "://" .URL) }}&nbsp;
@@ -28,7 +28,27 @@
         {{ if .HasChildren }}
         <div class="sub-menu">
             {{ range .Children }}
-                <a href="{{ .URL }}">{{ .Name }}</a>
+                <div class="sub-menu-item">
+                    <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }}">
+                        {{ .Name }}
+                        {{ if .HasChildren }}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" viewBox="0 0 14 14">
+                                <path d="M4 3.204c0-.859 1.013-1.319 1.658-.753l5.48 4.796a1 1 0 0 1 0 1.506l-5.48 4.796A1 1 0 0 1 4 10.796V3.204z"/>
+                            </svg>
+                        {{ end }}
+                    </a>
+                    {{ if .HasChildren }}
+                    <div class="sub-sub-menu">
+                        {{ range .Children }}
+                        <div class="sub-sub-menu-item">
+                            <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }}">
+                                {{ .Name }}
+                            </a>
+                        </div>
+                        {{ end }}
+                    </div>
+                    {{ end }}                    
+                </div>
             {{ end }}
         </div>
         {{ end }}

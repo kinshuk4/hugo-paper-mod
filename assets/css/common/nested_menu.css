@@ -1,12 +1,16 @@
+/* Sub-menu styles */
 .sub-menu {
   position: absolute;
   visibility: hidden;
   list-style: none;
+  padding: 0; /* Remove extra padding */
+  margin: 0; /* Remove extra margin */
   z-index: 10;
   border-radius: var(--radius);
   padding: 0 15px;
   background-color: var(--code-bg);
   border: 1px solid var(--tertiary);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
 }
 
 .sub-menu a:hover {
@@ -20,4 +24,83 @@
 
 .sub-menu:hover {
   visibility: visible;
+}
+
+.sub-menu-item {
+    position: relative; /* Required for positioning sub-sub-menu */
+}
+
+.sub-menu-item > a {
+    text-decoration: none;
+    color: var(--primary);
+    display: block;
+}
+
+.sub-menu-item > a:hover {
+    color: var(--link-hover);
+}
+
+
+/* Sub-sub-menu styles */
+.sub-sub-menu {
+    position: absolute;
+    top: 0; /* Align with the parent submenu item */
+    left: calc(100% - 1px); /* Slight overlap to visually connect with the parent */
+    visibility: hidden; /* Initially hidden */
+    background-color: var(--code-bg);
+    border: 1px solid var(--tertiary);
+    border-radius: var(--radius);
+    z-index: 10;
+    padding: 0; /* Remove extra padding */
+    margin: 0; /* Remove extra margin */
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.sub-sub-menu-item {
+    margin: 0; /* Remove extra margin */
+}
+
+.sub-sub-menu-item > a {
+    text-decoration: none;
+    color: var(--primary);
+    padding: 8px 12px;
+    display: block;
+}
+
+.sub-sub-menu-item > a:hover {
+    color: var(--link-hover);
+    background-color: var(--hover-bg); /* Optional: Add a hover background */
+}
+
+/* Show sub-menus on hover */
+.menu-item:hover > .sub-menu {
+    visibility: visible;
+    display: block;
+}
+
+.sub-menu-item:hover > .sub-sub-menu {
+    visibility: visible;
+    display: block;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .menu {
+        flex-direction: column;
+    }
+
+    .menu-item {
+        margin-right: 0;
+    }
+
+    .sub-menu,
+    .sub-sub-menu {
+        position: static;
+        display: none;
+    }
+
+    .menu-item:hover > .sub-menu,
+    .sub-menu-item:hover > .sub-sub-menu {
+        display: block;
+    }
 }
