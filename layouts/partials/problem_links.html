@@ -10,6 +10,13 @@
             {{ if strings.Contains $hostname "leetcode.com" }}LeetCode
             {{ else if strings.Contains $hostname "interviewbit.com" }}InterviewBit
             {{ else if strings.Contains $hostname "geeksforgeeks.org" }}GFG
+            {{ else if strings.Contains $hostname "lintcode.com" }}LintCode
+            {{ else if strings.Contains $hostname "codeforces.com" }}Codeforces
+            {{ else if strings.Contains $hostname "atcoder.jp" }}AtCoder
+            {{ else if strings.Contains $hostname "topcoder.com" }}TopCoder
+            {{ else if strings.Contains $hostname "codechef.com" }}CodeChef
+            {{ else if strings.Contains $hostname "hackerrank.com" }}HackerRank
+            {{ else if strings.Contains $hostname "hackerearth.com" }}HackerEarth
             {{ else }}
             <!-- Fallback: Capitalise unknown domains -->
             {{ $shortDomain := split $hostname "." }}
