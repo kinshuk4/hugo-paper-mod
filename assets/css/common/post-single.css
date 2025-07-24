@@ -620,10 +620,10 @@ https://github.com/reorx/hugo-PaperModX/blob/master/assets/css/common/post-singl
   cursor: pointer;
   vertical-align: middle;
   color: #888;
-  transition: color 0.2s;
+  transition: color 0.2s, opacity 0.2s;
   position: relative;
   display: inline-block;
-    opacity: 0;
+  opacity: 0;
   pointer-events: none;
 }
 
@@ -652,4 +652,10 @@ https://github.com/reorx/hugo-PaperModX/blob/master/assets/css/common/post-singl
   z-index: 10;
   opacity: 0.95;
   pointer-events: none;
+}
+
+.post-title:hover .copy-link-icon,
+.post-header:hover .copy-link-icon {
+  opacity: 1;
+  pointer-events: auto;
 }
