@@ -616,7 +616,7 @@ https://github.com/reorx/hugo-PaperModX/blob/master/assets/css/common/post-singl
   background: none;
   border: none;
   padding: 0 0 0 8px;
-  margin-left: 8px;
+  margin-left: 12px;
   cursor: pointer;
   vertical-align: middle;
   color: #888;
@@ -625,11 +625,13 @@ https://github.com/reorx/hugo-PaperModX/blob/master/assets/css/common/post-singl
   display: inline-block;
   opacity: 0;
   pointer-events: none;
+  align-items: center;
+  justify-content: center;
 }
 
 .copy-link-icon svg {
-  width: 22px;
-  height: 22px;
+  width: 40px;
+  height: 40px;
 }
 
 .copy-link-icon:hover {
