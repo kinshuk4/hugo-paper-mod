@@ -507,3 +507,107 @@ https://github.com/reorx/hugo-PaperModX/blob/master/assets/css/common/post-singl
 .toc summary:focus {
     outline: 0;
 }
+
+.problem-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 14px; /* Match .post-meta */
+}
+
+.difficulty-label {
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 2px 10px;
+  margin-left: 0;
+  font-size: 14px;
+  box-shadow: 0 1px 4px rgba(40,40,40,0.07);
+  letter-spacing: 0.02em;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.difficulty-easy.difficulty-label {
+  background: var(--difficulty-easy-bg);
+  color: var(--difficulty-easy-color);
+}
+.difficulty-medium.difficulty-label {
+  background: var(--difficulty-medium-bg);
+  color: var(--difficulty-medium-color);
+}
+.difficulty-hard.difficulty-label {
+  background: var(--difficulty-hard-bg);
+  color: var(--difficulty-hard-color);
+}
+
+.subtopics-label,
+.company-label {
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  font-size: 14px;
+  padding: 2px 10px;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(40,40,40,0.07);
+  background: #f1f1f1;
+  color: #333;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+}
+
+.subtopics-label svg,
+.company-label svg {
+  width: 14px;
+  height: 14px;
+  vertical-align: middle;
+}
+
+.subtopics-list,
+.company-list {
+  display: none;
+  margin-left: 8px;
+}
+
+.subtopics-label.open .subtopics-list,
+.company-label.open .company-list {
+  display: inline;
+}
+
+.subtopic-pill,
+.company-pill {
+  padding: 2px 10px;
+  border-radius: 12px;
+  margin-left: 2px;
+  margin-right: 0;
+  text-decoration: none;
+  transition: background 0.2s;
+  font-size: 14px;
+  font-weight: 500;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.subtopics-delim,
+.company-delim {
+  margin: 0 2px;
+  font-size: 14px;
+  color: #888;
+  vertical-align: middle;
+}
+
+/* Pill color classes */
+.pill-color-1 { background: #ffe0e6; color: #c2185b; }
+.pill-color-2 { background: #e0f7fa; color: #00796b; }
+.pill-color-3 { background: #fff9c4; color: #fbc02d; }
+.pill-color-4 { background: #e1bee7; color: #6a1b9a; }
+.pill-color-5 { background: #c8e6c9; color: #388e3c; }
+.pill-color-6 { background: #f3e5f5; color: #8e24aa; }
+.dark .pill-color-1 { background: #4b2e3e; color: #ffb6c1; }
+.dark .pill-color-2 { background: #264d4d; color: #80cbc4; }
+.dark .pill-color-3 { background: #4d4a26; color: #fff176; }
+.dark .pill-color-4 { background: #3e2e4b; color: #b39ddb; }
+.dark .pill-color-5 { background: #264d26; color: #a5d6a7; }
+.dark .pill-color-6 { background: #4d264d; color: #ce93d8; }
