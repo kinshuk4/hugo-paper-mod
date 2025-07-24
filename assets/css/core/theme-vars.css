@@ -20,6 +20,12 @@
     --link-hover: #4B9CD3; /* carolina blue */
     --table-row-alt-bg: #fafafa; /* Light theme alternating row background */
     --table-row-hover-bg: #f1f1f1;
+    --difficulty-easy-bg: #d4edda;
+    --difficulty-easy-color: #28a745;
+    --difficulty-medium-bg: #fff3cd;
+    --difficulty-medium-color: #ffc107;
+    --difficulty-hard-bg: #f8d7da;
+    --difficulty-hard-color: #dc3545;    
 }
 
 .dark {
@@ -34,6 +40,12 @@
     --border: rgb(51, 51, 51);
     --table-row-alt-bg: rgb(45, 45, 50); /* Dark theme alternating row background */
     --table-row-hover-bg: rgb(60, 60, 65);
+    --difficulty-easy-bg: #22372b;
+    --difficulty-easy-color: #28a745;
+    --difficulty-medium-bg: #4d4420;
+    --difficulty-medium-color: #ffc107;
+    --difficulty-hard-bg: #3a2326;
+    --difficulty-hard-color: #dc3545;    
 }
 
 .list {

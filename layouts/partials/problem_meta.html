@@ -1,0 +1,47 @@
+<div class="problem-info">
+  {{- if .Params.difficulty }}
+    <span class="difficulty-label difficulty-{{ .Params.difficulty | lower }}">
+      {{ .Params.difficulty | title }}
+    </span>
+  {{- end }}
+  {{- if .Params.subtopics }}
+    <span class="subtopics-label pill" onclick="this.classList.toggle('open')">
+      <svg xmlns='http://www.w3.org/2000/svg' style='position:relative; top:4px;' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'>
+        <title>Subtopics</title>
+        <desc>List of subtopics for the post</desc>
+        <path d='M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z' />
+        <path d='M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586 7 7L13.586 9l-7-7H2v4.586z' />
+      </svg>&nbsp;Subtopics
+      <span class="subtopics-list">
+        {{- $len := len .Params.subtopics -}}
+        {{- range $i, $subtopic := .Params.subtopics }}
+        {{- $colorClass := printf "pill-color-%d" (add (mod $i 6) 1) -}}
+        <a href="/subtopics/{{ $subtopic | urlize }}" class="pill subtopic-pill {{ $colorClass }}">{{ $subtopic }}</a>
+        {{- if lt (add $i 1) $len }}{{ if lt $i (sub $len 1) }} <span class="subtopics-delim">&middot;</span> {{ end }}{{ end }}
+        {{- end }}
+      </span>
+    </span>
+  {{- end }}
+    {{- if .Params.companies }}
+  <span class="company-label pill" onclick="this.classList.toggle('open')">
+    <svg xmlns="http://www.w3.org/2000/svg" style="position:relative; top:4px;" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+      <title>Companies</title>
+      <desc>Building icon for companies</desc>
+      <rect x="2" y="5" width="12" height="9" rx="2" fill="currentColor"/>
+      <rect x="5" y="8" width="2" height="2" fill="#fff"/>
+      <rect x="9" y="8" width="2" height="2" fill="#fff"/>
+      <rect x="7" y="11" width="2" height="3" fill="#fff"/>
+      <rect x="6" y="2" width="4" height="3" fill="currentColor"/>
+    </svg>
+    &nbsp;Companies
+    <span class="company-list">
+      {{- $len := len .Params.companies -}}
+      {{- range $i, $company := .Params.companies }}
+        {{- $colorClass := printf "pill-color-%d" (add (mod $i 6) 1) -}}
+        <span class="pill company-pill {{ $colorClass }}">{{ $company }}</span>
+        {{- if lt (add $i 1) $len }}{{ if lt $i (sub $len 1) }} <span class="company-delim">&middot;</span> {{ end }}{{ end }}
+      {{- end }}
+    </span>
+  </span>
+{{- end }}
+</div>

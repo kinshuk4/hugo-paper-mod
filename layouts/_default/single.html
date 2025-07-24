@@ -14,6 +14,7 @@
       </span>
       {{- end }}
     </h1>
+    {{ partial "problem_meta.html" . }}
     {{- if .Description }}
     <div class="post-description">
       {{ .Description }}
@@ -26,7 +27,7 @@
       {{- partial "edit_post.html" . -}}
       {{- partial "post_canonical.html" . -}}
     </div>
-    {{- end }}
+    {{- end }}  
     {{- if .Params.problem_links }}
       {{ partial "problem_links.html" . }}
     {{- end }}
