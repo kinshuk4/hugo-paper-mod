@@ -661,3 +661,10 @@ https://github.com/reorx/hugo-PaperModX/blob/master/assets/css/common/post-singl
   opacity: 1;
   pointer-events: auto;
 }
+
+.last-updated {
+  font-size: 13px;
+  color: #888;
+  margin-left: 1em;
+  vertical-align: middle;
+}

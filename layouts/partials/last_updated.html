@@ -1,0 +1,3 @@
+{{- if and (.Lastmod) (ne .Lastmod .Date) }}
+  <span class="last-updated">Last updated: {{ .Lastmod | time.Format "Jan 2, 2006" }}</span>
+{{- end }}
