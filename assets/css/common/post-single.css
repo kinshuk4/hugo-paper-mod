@@ -511,7 +511,7 @@ https://github.com/reorx/hugo-PaperModX/blob/master/assets/css/common/post-singl
 .problem-info {
   display: flex;
   flex-wrap: wrap;
-  gap: 1em;
+  gap: 0.5em;
   align-items: center;
   margin-bottom: 8px;
   font-size: 14px; /* Match .post-meta */
@@ -667,4 +667,29 @@ https://github.com/reorx/hugo-PaperModX/blob/master/assets/css/common/post-singl
   color: #888;
   margin-left: 1em;
   vertical-align: middle;
+}
+
+@media (max-width: 600px) {
+  .pill,
+  .subtopic-pill,
+  .company-pill,
+  .tag-pill {
+    font-size: 12px;
+    padding: 2px 6px;
+    margin: 2px 0;
+  }
+  .copy-link-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* 3. Stack meta info vertically on very small screens */
+@media (max-width: 480px) {
+  .problem-info,
+  .post-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3em;
+  }
 }
