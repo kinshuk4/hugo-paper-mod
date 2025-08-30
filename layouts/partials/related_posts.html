@@ -1,7 +1,6 @@
 {{ $related := .Page.Params.related_problems }}
 {{ if $related }}
 <div class="related-posts">
-  <h3>Related Problems</h3>
   <ul>
     {{ range $rel := $related }}
       {{ $page := site.GetPage $rel }}
