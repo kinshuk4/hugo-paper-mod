@@ -1,15 +1,14 @@
 {{ $related := .Page.Params.related_problems }}
-<pre>related: {{ printf "%#v" $related }}</pre>
 {{ if $related }}
 <div class="related-posts">
   <h3>Related Problems</h3>
   <ul>
     {{ range $rel := $related }}
-      <pre>$rel: {{ printf "%#v" $rel }}</pre>
       {{ $page := site.GetPage $rel }}
-      <pre>$page: {{ printf "%#v" $page }}</pre>
       {{ if $page }}
         <li><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></li>
+        {{ else }}
+        {{- errorf "BROKEN LINK: The path '%s' in the 'related_problems' of '%s' does not lead to a valid page." $rel .Page.Path -}}
       {{ end }}
     {{ end }}
   </ul>
