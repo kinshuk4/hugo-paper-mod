@@ -1,0 +1,64 @@
+.related-expander {
+  background-color: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: var(--radius); /* Using your radius variable! */
+  margin: 1.5em 0;
+  overflow: hidden;
+}
+
+/* Clickable summary bar */
+.related-expander summary {
+  padding: 12px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.2s ease-in-out;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Hover effect using your table hover variable for consistency */
+.related-expander summary:hover {
+  background-color: var(--table-row-hover-bg);
+}
+
+/* Remove border when the expander is open */
+.related-expander[open] > summary {
+  border-bottom: none;
+}
+
+/* Custom marker (arrow) using your secondary text color */
+.related-expander summary::marker {
+  color: var(--secondary);
+}
+
+/* List of related posts */
+.related-expander .related-posts ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Each list item, using your border variable */
+.related-expander .related-posts li {
+  margin: 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.related-expander .related-posts li:last-child {
+  border-bottom: none;
+}
+
+/* Links within the list */
+.related-expander .related-posts li a {
+  display: block;
+  padding: 12px 16px;
+  color: var(--primary); /* Using your primary text color for links */
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+/* Hover effect for links, using your specific link hover color */
+.related-expander .related-posts li a:hover {
+  background-color: var(--table-row-hover-bg);
+  color: var(--link-hover);
+}
