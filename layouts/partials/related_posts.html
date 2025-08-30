@@ -5,7 +5,17 @@
     {{ range $rel := $related }}
       {{ $page := site.GetPage $rel }}
       {{ if $page }}
-        <li><a href="{{ $page.RelPermalink }}" class="problem-title">{{ $page.Title }}</a></li>
+        <li>
+            <a href="{{ $page.RelPermalink }}" class="problem-title">{{ $page.Title }}
+            {{ with $page.Params.difficulty }}
+
+               <span class="difficulty-label difficulty-{{ $page.Params.difficulty | lower }}">
+                {{ $page.Params.difficulty | title }}
+                </span>
+            {{ end }}
+            </a>
+        </li>
+
         {{ else }}
         {{- errorf "BROKEN LINK: The path '%s' in the 'related_problems' of '%s' does not lead to a valid page." $rel .Page.Path -}}
       {{ end }}
